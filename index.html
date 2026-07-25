@@ -730,9 +730,16 @@
       box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
     }
 
-    .btn-wa:hover {
+    .btn-wa:hover:not(:disabled) {
       box-shadow: 0 0 25px rgba(37, 211, 102, 0.7);
       transform: translateY(-2px);
+    }
+
+    .btn-wa:disabled {
+      background: #475569;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
     }
   </style>
 </head>
@@ -767,8 +774,6 @@
           
         </p>
 
-        
-
         <div class="profile-buttons" style="margin-top: 25px;">
           <button class="btn-main" onclick="switchPage('catalog')">🛍️ Lihat Katalog Produk</button>
           <a href="https://instagram.com/ekraf_bemkmpnm" target="_blank" class="btn-ig">
@@ -783,32 +788,32 @@
         <p style="font-size: 0.95rem; color: #93c5fd; margin-bottom: 20px;"></p>
         
         <div class="group-photo-container" onclick="openVisiMisiModal()">
-          <img src="STARTING.JPG" alt="Foto Bersama Tim Ekraf">
+          <img src="starting.jpg" alt="Foto Bersama Tim Ekraf">
         </div>
 
         <div class="team-grid">
           
-          <div class="team-member-card" onclick="openZoomModal('Menteri Ekraf', '1.JPG')">
-            <img src="1.JPG" alt="Anggota 1">
-            <h3>Nama 1</h3>
+          <div class="team-member-card" onclick="openZoomModal('Menteri Ekraf', '1.jpg')">
+            <img src="1.jpg" alt="Maihendra">
+            <h3>Maihendra</h3>
             <p>Menteri</p>
           </div>
 
-          <div class="team-member-card" onclick="openZoomModal('Staff Ekraf', '2.JPG')">
-            <img src="2.JPG" alt="Anggota 2">
-            <h3>Nama 2</h3>
+          <div class="team-member-card" onclick="openZoomModal('Staff Ekraf', '2.jpg')">
+            <img src="2.jpg" alt="Tiara">
+            <h3>Tiara</h3>
             <p>Staff</p>
           </div>
 
-          <div class="team-member-card" onclick="openZoomModal('Staff Ekraf', '3.JPG')">
-            <img src="3.JPG" alt="Anggota 3">
-            <h3>Nama 3</h3>
+          <div class="team-member-card" onclick="openZoomModal('Staff Ekraf', '3.jpg')">
+            <img src="3.jpg" alt="Laila">
+            <h3>Laila</h3>
             <p>Staff</p>
           </div>
 
-          <div class="team-member-card" onclick="openZoomModal('Staff Ekraf', '4.JPG')">
-            <img src="4.JPG" alt="Anggota 4">
-            <h3>Nama 4</h3>
+          <div class="team-member-card" onclick="openZoomModal('Staff Ekraf', '4.jpg')">
+            <img src="4.jpg" alt="Gunawan">
+            <h3>Gunawan</h3>
             <p>Staff</p>
           </div>
 
@@ -821,7 +826,7 @@
   <div id="visiMisiModal" class="modal-overlay" onclick="closeModalOnOutside(event, 'visiMisiModal')">
     <div class="modal-content">
       <button class="modal-close" onclick="closeModal('visiMisiModal')">&times;</button>
-      <img src="STARTING.JPG" alt="Foto Bersama" class="modal-img" style="width: 140px; height: 100px; border-radius: 10px;">
+      <img src="starting.jpg" alt="Foto Bersama" class="modal-img" style="width: 140px; height: 100px; border-radius: 10px;">
       <h2>Kementerian Ekonomi Kreatif</h2>
       <div class="modal-role">BEM-KM PNM</div>
       <div class="modal-text-box">
@@ -853,7 +858,7 @@
       <div class="product-grid">
 
         <div class="product-card">
-          <img src="52.JPG" alt="Sepatu Pantofel Cowok">
+          <img src="52.jpg" alt="Sepatu Pantofel Cowok">
           <div>
             <div class="product-title">Sepatu Pantofel Cowok</div>
             <div class="price">Rp 75.000</div>
@@ -869,7 +874,7 @@
         </div>
 
         <div class="product-card">
-          <img src="53.JPG" alt="Sepatu Pantofel Cewek">
+          <img src="53.jpg" alt="Sepatu Pantofel Cewek">
           <div>
             <div class="product-title">Sepatu Pantofel Cewek</div>
             <div class="price">Rp 65.000</div>
@@ -885,7 +890,7 @@
         </div>
 
         <div class="product-card">
-          <img src="54.JPG" alt="Kaos Kaki Putih">
+          <img src="54.jpg" alt="Kaos Kaki Putih">
           <div>
             <div class="product-title">Kaos Kaki Putih</div>
             <div class="price">Rp 12.000</div>
@@ -894,7 +899,7 @@
         </div>
 
         <div class="product-card">
-          <img src="55.JPG" alt="Topi Rimba">
+          <img src="55.jpg" alt="Topi Rimba">
           <div>
             <div class="product-title">Topi Rimba</div>
             <div class="price">Rp 17.000</div>
@@ -903,7 +908,7 @@
         </div>
 
         <div class="product-card">
-          <img src="56.JPG" alt="Dasi Hitam">
+          <img src="56.jpg" alt="Dasi Hitam">
           <div>
             <div class="product-title">Dasi Hitam</div>
             <div class="price">Rp 10.000</div>
@@ -912,7 +917,7 @@
         </div>
 
         <div class="product-card">
-          <img src="57.JPG" alt="Ikat Pinggang">
+          <img src="57.jpg" alt="Ikat Pinggang">
           <div>
             <div class="product-title">Ikat Pinggang</div>
             <div class="price">Rp 15.000</div>
@@ -921,7 +926,7 @@
         </div>
 
         <div class="product-card">
-          <img src="58.JPG" alt="Kemeja Cowo">
+          <img src="58.jpg" alt="Kemeja Cowo">
           <div>
             <div class="product-title">Kemeja Cowo</div>
             <div class="price">Rp 65.000</div>
@@ -937,7 +942,7 @@
         </div>
 
         <div class="product-card">
-          <img src="59.JPG" alt="Kemeja Cewe">
+          <img src="59.jpg" alt="Kemeja Cewe">
           <div>
             <div class="product-title">Kemeja Cewe</div>
             <div class="price">Rp 65.000</div>
@@ -952,7 +957,7 @@
         </div>
 
         <div class="product-card">
-          <img src="60.JPG" alt="Celana Kain Cowo">
+          <img src="60.jpg" alt="Celana Kain Cowo">
           <div>
             <div class="product-title">Celana Kain Cowo</div>
             <div class="price">Rp 65.000</div>
@@ -975,7 +980,7 @@
         </div>
 
         <div class="product-card">
-          <img src="61.JPG" alt="Celana Kain Cewe">
+          <img src="61.jpg" alt="Celana Kain Cewe">
           <div>
             <div class="product-title">Celana Kain Cewe</div>
             <div class="price">Rp 65.000</div>
@@ -1171,7 +1176,7 @@
 
     function sendToWhatsApp() {
       const adminPhone = '6281999783021';
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbzZYFCoeSVDXqLlCpm8ElBZTqnEtJALxHLeTQBchkY7d7onp_G-XtYAVtpFxccGchO7/exec';
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxxl4C-zcLWVAJ0jImDLw-scotvlMqaL8pYAlyIejU9538TBHXnCf9CuN0rdqR0xE5T/exec';
 
       const name = document.getElementById('buyerName').value.trim();
       const phone = document.getElementById('buyerPhone').value.trim();
@@ -1199,34 +1204,57 @@
         itemDetailsPlain += `${i + 1}. ${item.name} (${item.qty}x) = Rp ${subtotal.toLocaleString('id-ID')}; `;
       });
 
-      // KIRIM DATA KE GOOGLE SHEETS OTOMATIS
-      fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: name,
-          phone: phone,
-          prodi: prodi,
-          items: itemDetailsPlain,
-          total: `Rp ${total.toLocaleString('id-ID')}`
-        })
-      }).catch(error => console.error('Error:', error));
+      // UBAH FOTO MENJADI BASE64 DAN UPLOAD KE DRIVE VIA APPS SCRIPT
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const base64Data = e.target.result.split(',')[1];
 
-      // BUKA WHATSAPP ADMIN
-      const textMessage = 
-        `Halo Admin, saya mau pesan perlengkapan via Web!%0A%0A` +
-        `*🛒 DAFTAR PESANAN:*%0A` +
-        `${itemDetails}%0A` +
-        `*💰 TOTAL BAYAR:* Rp ${total.toLocaleString('id-ID')}%0A%0A` +
-        `*👤 DATA PEMBELI:*%0A` +
-        `• *Nama Lengkap:* ${name}%0A` +
-        `• *No. WhatsApp:* ${phone}%0A` +
-        `• *Prodi:* ${prodi}%0A%0A` +
-        `_Bukti transfer telah saya upload (File terlampir)._`;
+        // Ubah tampilan tombol agar tidak di-klik 2x oleh pembeli saat loading
+        const btnWa = document.querySelector('.btn-wa');
+        const originalText = btnWa.innerHTML;
+        btnWa.innerHTML = '⏳ Sedang mengupload bukti...';
+        btnWa.disabled = true;
 
-      const waUrl = `https://wa.me/${adminPhone}?text=${textMessage}`;
-      window.open(waUrl, '_blank');
+        fetch(scriptURL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: name,
+            phone: phone,
+            prodi: prodi,
+            items: itemDetailsPlain,
+            total: `Rp ${total.toLocaleString('id-ID')}`,
+            image64: base64Data,
+            mimeType: proofFile.type
+          })
+        }).then(() => {
+          // Kembalikan tombol seperti semula setelah selesai
+          btnWa.innerHTML = originalText;
+          btnWa.disabled = false;
+          
+          // BUKA WHATSAPP ADMIN
+          const textMessage = 
+            `Halo Admin, saya mau pesan perlengkapan via Web!%0A%0A` +
+            `*🛒 DAFTAR PESANAN:*%0A` +
+            `${itemDetails}%0A` +
+            `*💰 TOTAL BAYAR:* Rp ${total.toLocaleString('id-ID')}%0A%0A` +
+            `*👤 DATA PEMBELI:*%0A` +
+            `• *Nama Lengkap:* ${name}%0A` +
+            `• *No. WhatsApp:* ${phone}%0A` +
+            `• *Prodi:* ${prodi}%0A%0A` +
+            `_Bukti transfer telah saya upload ke sistem (Tersimpan di G-Drive)._`;
+
+          window.open(`https://wa.me/${adminPhone}?text=${textMessage}`, '_blank');
+        }).catch(error => {
+          console.error('Error:', error);
+          alert('Gagal mengirim data, silakan coba lagi.');
+          btnWa.innerHTML = originalText;
+          btnWa.disabled = false;
+        });
+      };
+
+      reader.readAsDataURL(proofFile);
     }
   </script>
 
