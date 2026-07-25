@@ -1171,6 +1171,7 @@
 
     function sendToWhatsApp() {
       const adminPhone = '6281999783021';
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzZYFCoeSVDXqLlCpm8ElBZTqnEtJALxHLeTQBchkY7d7onp_G-XtYAVtpFxccGchO7/exec';
 
       const name = document.getElementById('buyerName').value.trim();
       const phone = document.getElementById('buyerPhone').value.trim();
@@ -1188,14 +1189,31 @@
       }
 
       let itemDetails = '';
+      let itemDetailsPlain = '';
       let total = 0;
 
       cart.forEach((item, i) => {
         const subtotal = item.price * item.qty;
         total += subtotal;
         itemDetails += `${i + 1}. *${item.name}* (${item.qty}x) = Rp ${subtotal.toLocaleString('id-ID')}%0A`;
+        itemDetailsPlain += `${i + 1}. ${item.name} (${item.qty}x) = Rp ${subtotal.toLocaleString('id-ID')}; `;
       });
 
+      // KIRIM DATA KE GOOGLE SHEETS OTOMATIS
+      fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: name,
+          phone: phone,
+          prodi: prodi,
+          items: itemDetailsPlain,
+          total: `Rp ${total.toLocaleString('id-ID')}`
+        })
+      }).catch(error => console.error('Error:', error));
+
+      // BUKA WHATSAPP ADMIN
       const textMessage = 
         `Halo Admin, saya mau pesan perlengkapan via Web!%0A%0A` +
         `*🛒 DAFTAR PESANAN:*%0A` +
