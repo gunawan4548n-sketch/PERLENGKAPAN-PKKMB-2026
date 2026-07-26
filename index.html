@@ -574,7 +574,7 @@
 
     .cart-table {
       width: 100%;
-      min-width: 450px; /* Lebar minimum agar tidak bertumpuk di layar kecil */
+      min-width: 450px;
       border-collapse: collapse;
       font-size: 0.95rem;
     }
@@ -627,7 +627,7 @@
 
     .qris-img {
       width: 100%;
-      max-width: 300px; /* Supaya ga kebesaran di HP */
+      max-width: 300px;
       height: auto;
       object-fit: contain;
       background: white;
@@ -824,34 +824,59 @@
       }
       .header-title {
         font-size: 1.1rem;
+        text-align: center;
       }
       .profile-card, .checkout-card {
-        padding: 25px 20px;
+        padding: 20px 15px;
       }
       .profile-card h1 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
       }
       .section-title {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
       }
+      
+      /* PERBAIKAN UKURAN KOTAK BARANG DI HP */
       .product-grid {
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* 2 kolom di HP */
-        gap: 15px;
+        grid-template-columns: repeat(2, 1fr); /* Pastikan selalu pas 2 kolom */
+        gap: 10px; /* Jarak antar kotak dikurangi agar muat */
       }
       .product-card {
-        padding: 15px;
+        padding: 12px; /* Padding dalam kotak dikurangi */
       }
       .product-card img {
-        height: 180px; /* Gambar lebih kecil di HP */
+        height: 140px; /* Gambar lebih proporsional */
+        margin-bottom: 10px;
       }
+      
+      /* PERBAIKAN TEKS, HARGA, & TOMBOL DI DALAM KOTAK BARANG */
+      .product-title {
+        font-size: 0.85rem; /* Teks judul barang dikecilkan */
+        line-height: 1.2;
+        margin-bottom: 6px;
+      }
+      .price {
+        font-size: 0.95rem; /* Harga dikecilkan */
+        margin-bottom: 10px;
+      }
+      .size-select {
+        padding: 6px; /* Kotak pilih ukuran dirapikan */
+        font-size: 0.75rem; 
+        margin-bottom: 10px;
+      }
+      .btn-add {
+        padding: 8px; /* Tombol 'Tambah' disesuaikan */
+        font-size: 0.85rem;
+      }
+
       .qris-box {
-        padding: 20px;
+        padding: 15px;
       }
       .modal-content {
         padding: 20px;
       }
       .total-box {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
       }
     }
   </style>
