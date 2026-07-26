@@ -28,6 +28,44 @@
       100% { background-position: 0% 50%; }
     }
 
+    /* ========================================= */
+    /* ANIMASI TEKS GRADIENT BARU */
+    /* ========================================= */
+    .gradient-text {
+      /* Menggunakan 4 warna kamu + warna 1 di akhir agar animasinya looping tanpa patah */
+      background: linear-gradient(to right, #5e00ff, #0853ea, #3af916, #00f4ff, #5e00ff);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      animation: gradientTextAnim 5.5s linear infinite; /* Kecepatan 5.5 seperti request */
+      display: inline-block;
+      text-shadow: none !important; /* Hilangkan shadow lama biar gradasinya jelas */
+    }
+
+    @keyframes gradientTextAnim {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* CSS UNTUK SPLASH CURSOR BACKGROUND */
+    #splash-cursor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0; 
+      pointer-events: none; /* Biar tetap bisa klik tombol di web */
+    }
+
+    /* Pastikan header dan konten web tetap di atas kanvas */
+    .header-bar, .page-section, .modal-overlay {
+      position: relative;
+      z-index: 10;
+    }
+
     /* 2. HEADER BAR */
     .header-bar {
       background-color: rgba(11, 19, 41, 0.85);
@@ -58,9 +96,8 @@
 
     .header-title {
       font-size: 1.3rem;
-      font-weight: 600;
-      color: white;
-      text-shadow: 0 0 12px rgba(31, 2, 69, 0.8);
+      font-weight: 900;
+      letter-spacing: 0.5px;
     }
 
     .nav-btn {
@@ -133,9 +170,8 @@
 
     .profile-card h1 {
       font-size: 2.2rem;
-      color: white;
       margin-bottom: 15px;
-      text-shadow: 0 0 15px rgba(147, 197, 253, 0.6);
+      font-weight: 900;
     }
 
     .po-badge {
@@ -836,36 +872,34 @@
         font-size: 1.3rem;
       }
       
-      /* PERBAIKAN UKURAN KOTAK BARANG DI HP */
       .product-grid {
-        grid-template-columns: repeat(2, 1fr); /* Pastikan selalu pas 2 kolom */
-        gap: 10px; /* Jarak antar kotak dikurangi agar muat */
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 10px; 
       }
       .product-card {
-        padding: 12px; /* Padding dalam kotak dikurangi */
+        padding: 12px; 
       }
       .product-card img {
-        height: 140px; /* Gambar lebih proporsional */
+        height: 140px; 
         margin-bottom: 10px;
       }
       
-      /* PERBAIKAN TEKS, HARGA, & TOMBOL DI DALAM KOTAK BARANG */
       .product-title {
-        font-size: 0.85rem; /* Teks judul barang dikecilkan */
+        font-size: 0.85rem; 
         line-height: 1.2;
         margin-bottom: 6px;
       }
       .price {
-        font-size: 0.95rem; /* Harga dikecilkan */
+        font-size: 0.95rem; 
         margin-bottom: 10px;
       }
       .size-select {
-        padding: 6px; /* Kotak pilih ukuran dirapikan */
+        padding: 6px; 
         font-size: 0.75rem; 
         margin-bottom: 10px;
       }
       .btn-add {
-        padding: 8px; /* Tombol 'Tambah' disesuaikan */
+        padding: 8px; 
         font-size: 0.85rem;
       }
 
@@ -883,12 +917,14 @@
 </head>
 <body>
 
+  <canvas id="splash-cursor"></canvas>
+
   <div class="header-bar">
     <div class="header-left">
       <video autoplay loop muted playsinline class="logo-ekraf">
         <source src="LOGO ANIMASI EKRAF.mp4" type="video/mp4">
       </video>
-      <span class="header-title">KEMENTERIAN EKONOMI KREATIF</span>
+      <span class="header-title gradient-text">KEMENTERIAN EKONOMI KREATIF</span>
     </div>
     <div>
       <button class="nav-btn" onclick="switchPage('profile')">Profil</button>
@@ -907,7 +943,7 @@
         </div>
 
         <div class="po-badge">🔥 OPEN PRE ORDER PERLENGKAPAN PKKMB 2026 🔥</div>
-        <h1>KEMENTERIAN EKONOMI KREATIF</h1>
+        <h1 class="gradient-text">KEMENTERIAN EKONOMI KREATIF</h1>
         <p>
           
         </p>
@@ -1464,6 +1500,23 @@
       
       document.getElementById('btnSelesai').disabled = false;
     }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/webgl-fluid@0.2.8/dist/webgl-fluid.min.js"></script>
+  
+  <script>
+    WebGLFluid(document.getElementById('splash-cursor'), {
+      SIM_RESOLUTION: 128,
+      DYE_RESOLUTION: 1440,
+      DENSITY_DISSIPATION: 3.5,
+      VELOCITY_DISSIPATION: 2,
+      PRESSURE: 0.1,
+      CURL: 3,
+      SPLAT_RADIUS: 0.2,
+      SPLAT_FORCE: 6000,
+      COLOR_UPDATE_SPEED: 10,
+      TRANSPARENT: true // Biar background gradasi web-nya tetap kelihatan
+    });
   </script>
 
 </body>
