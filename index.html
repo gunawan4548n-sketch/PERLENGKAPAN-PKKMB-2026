@@ -85,6 +85,12 @@
     }
     .page-section.active {
       display: block;
+      animation: fadeInPage 0.4s ease-in-out;
+    }
+
+    @keyframes fadeInPage {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     /* HALAMAN 1: PROFIL / LANDING PAGE */
@@ -741,6 +747,27 @@
       box-shadow: none;
       transform: none;
     }
+
+    /* TOMBOL SELESAI TRANSAKSI */
+    .btn-selesai {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 16px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      border-radius: 30px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+    }
+
+    .btn-selesai:hover {
+      box-shadow: 0 0 25px rgba(16, 185, 129, 0.7);
+      transform: translateY(-2px);
+    }
   </style>
 </head>
 <body>
@@ -1058,11 +1085,40 @@
         </div>
 
         <button class="btn-wa" onclick="sendToWhatsApp()">
-          📲 KIRIM DETAIL PESANAN & BUKTI KE WA
+           KIRIM DETAIL PESANAN & BUKTI KE WHATSAAP
+        </button>
+
+        <button class="btn-selesai" onclick="switchPage('success')">
+           SELESAI
         </button>
 
       </div>
+    </div>
+  </div>
 
+  <div id="page-success" class="page-section">
+    <div class="container">
+      <div class="checkout-card" style="text-align: center; padding: 60px 30px; margin-top: 40px;">
+        <div style="font-size: 5rem; margin-bottom: 20px;">🎉</div>
+        <h2 class="section-title" style="margin-bottom: 15px; font-size: 2.2rem; color: #60a5fa;">Terima Kasih Telah Berbelanja!</h2>
+        
+        <p style="color: #e3e3e3; font-size: 1.15rem; line-height: 1.6; margin-bottom: 25px;">
+          Pesanan Anda telah kami terima dan sedang dalam antrean verifikasi tim kami.<br>
+          Pastikan Anda sudah berhasil mengirimkan chat berisi rincian & bukti transfer ke Admin via WhatsApp.
+        </p>
+        
+        <div class="info-box" style="display: inline-block; text-align: left; margin-bottom: 35px; max-width: 600px;">
+          📢 <b>Informasi Penting:</b><br><br>
+          • Simpan resi/bukti pembayaran Anda dengan baik.<br>
+          • Jadwal dan lokasi pengambilan perlengkapan akan diinformasikan secara resmi melalui Instagram <b>@ekraf_bemkmpnm</b>.<br>
+          • Jika ada kendala, Anda dapat menghubungi Admin kembali melalui chat WhatsApp.
+        </div>
+        
+        <br>
+        <button class="btn-main" onclick="resetAndGoHome()" style="background: linear-gradient(135deg, #1e293b, #3b82f6); max-width: 250px;">
+          ⬅️ Kembali ke Beranda
+        </button>
+      </div>
     </div>
   </div>
 
@@ -1088,20 +1144,43 @@
       }
     }
 
+    // LOGIKA PERPINDAHAN HALAMAN DIPERBARUI UNTUK MENDUKUNG 3 HALAMAN
     function switchPage(pageName) {
       const profilePage = document.getElementById('page-profile');
       const catalogPage = document.getElementById('page-catalog');
+      const successPage = document.getElementById('page-success'); // Halaman 3
 
-      if (!profilePage || !catalogPage) return;
+      if (!profilePage || !catalogPage || !successPage) return;
 
+      // Hapus status aktif dari semua halaman
+      profilePage.classList.remove('active');
+      catalogPage.classList.remove('active');
+      successPage.classList.remove('active');
+
+      // Tambahkan status aktif pada halaman yang dituju
       if (pageName === 'profile') {
         profilePage.classList.add('active');
-        catalogPage.classList.remove('active');
       } else if (pageName === 'catalog') {
-        profilePage.classList.remove('active');
         catalogPage.classList.add('active');
+      } else if (pageName === 'success') {
+        successPage.classList.add('active');
       }
+      
+      // Gulir ke atas halaman secara otomatis
       window.scrollTo(0, 0);
+    }
+
+    // FUNGSI RESET KERANJANG DAN FORMULIR SETELAH SELESAI TRANSAKSI
+    function resetAndGoHome() {
+      cart = [];
+      updateCartUI();
+      
+      document.getElementById('buyerName').value = '';
+      document.getElementById('buyerPhone').value = '';
+      document.getElementById('buyerProdi').value = '';
+      document.getElementById('buyerProof').value = '';
+      
+      switchPage('profile');
     }
 
     let cart = [];
@@ -1176,7 +1255,7 @@
 
     function sendToWhatsApp() {
       const adminPhone = '6281999783021';
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbxxl4C-zcLWVAJ0jImDLw-scotvlMqaL8pYAlyIejU9538TBHXnCf9CuN0rdqR0xE5T/exec';
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbxtabVBByk792DtweUDpO4ZFy2xJUTGTzTonflv5eoEcPmNpS4UTZDBUcItJ1v-lzgs/exec';
 
       const name = document.getElementById('buyerName').value.trim();
       const phone = document.getElementById('buyerPhone').value.trim();
