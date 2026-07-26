@@ -457,7 +457,7 @@
 
     .product-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 25px;
       margin-bottom: 45px;
     }
@@ -565,10 +565,17 @@
       box-shadow: 0 0 25px rgba(29, 78, 216, 0.4);
     }
 
+    /* WRAPPER TABEL AGAR BISA DI-SCROLL DI HP */
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      margin-bottom: 25px;
+    }
+
     .cart-table {
       width: 100%;
+      min-width: 450px; /* Lebar minimum agar tidak bertumpuk di layar kecil */
       border-collapse: collapse;
-      margin-bottom: 25px;
       font-size: 0.95rem;
     }
 
@@ -619,8 +626,9 @@
     }
 
     .qris-img {
-      width: 300px;
-      height: 300px;
+      width: 100%;
+      max-width: 300px; /* Supaya ga kebesaran di HP */
+      height: auto;
       object-fit: contain;
       background: white;
       padding: 15px;
@@ -721,6 +729,35 @@
       background: #3b82f6;
     }
 
+    /* TOMBOL UPLOAD BUKTI BARU */
+    .btn-upload {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 14px;
+      font-weight: bold;
+      font-size: 1.05rem;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+      box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-upload:hover:not(:disabled) {
+      box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
+      transform: translateY(-2px);
+    }
+
+    .btn-upload:disabled {
+      background: #475569;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    /* TOMBOL KE WHATSAPP */
     .btn-wa {
       background: linear-gradient(135deg, #25D366, #1eb854);
       color: white;
@@ -764,9 +801,58 @@
       box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
     }
 
-    .btn-selesai:hover {
+    .btn-selesai:hover:not(:disabled) {
       box-shadow: 0 0 25px rgba(16, 185, 129, 0.7);
       transform: translateY(-2px);
+    }
+    
+    .btn-selesai:disabled {
+      background: #475569;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    /* ========================================= */
+    /* PENGATURAN KHUSUS UNTUK HP (MOBILE FIXES) */
+    /* ========================================= */
+    @media (max-width: 768px) {
+      .header-bar {
+        flex-direction: column;
+        padding: 15px 20px;
+        gap: 15px;
+      }
+      .header-title {
+        font-size: 1.1rem;
+      }
+      .profile-card, .checkout-card {
+        padding: 25px 20px;
+      }
+      .profile-card h1 {
+        font-size: 1.8rem;
+      }
+      .section-title {
+        font-size: 1.4rem;
+      }
+      .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* 2 kolom di HP */
+        gap: 15px;
+      }
+      .product-card {
+        padding: 15px;
+      }
+      .product-card img {
+        height: 180px; /* Gambar lebih kecil di HP */
+      }
+      .qris-box {
+        padding: 20px;
+      }
+      .modal-content {
+        padding: 20px;
+      }
+      .total-box {
+        font-size: 1.3rem;
+      }
     }
   </style>
 </head>
@@ -1026,19 +1112,21 @@
       <div class="checkout-card">
         <h2 class="section-title">🛒 Keranjang Belanja Anda</h2>
         
-        <table class="cart-table">
-          <thead>
-            <tr>
-              <th>Produk</th>
-              <th>Harga</th>
-              <th>Jumlah</th>
-              <th>Subtotal</th>
-            </tr>
-          </thead>
-          <tbody id="cartTableBody">
-            <tr><td colspan="4" style="text-align:center; color:#888;">Belum ada produk yang dipilih. Klik tombol <b>+ Tambah</b> di atas!</td></tr>
-          </tbody>
-        </table>
+        <div class="table-responsive">
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th>Produk</th>
+                <th>Harga</th>
+                <th>Jumlah</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody id="cartTableBody">
+              <tr><td colspan="4" style="text-align:center; color:#888;">Belum ada produk yang dipilih. Klik tombol <b>+ Tambah</b> di atas!</td></tr>
+            </tbody>
+          </table>
+        </div>
 
         <div class="total-box">
           Total Belanja: <span id="totalPrice">Rp 0</span>
@@ -1076,20 +1164,21 @@
         </div>
 
         <div class="form-group">
-          <label>Upload Bukti Transfer (Screenshot):</label>
+          <label>1. Upload Bukti Transfer (Screenshot):</label>
           <input type="file" id="buyerProof" accept="image/*">
+          <button id="btnUpload" class="btn-upload" onclick="uploadBukti()">📤 UPLOAD BUKTI KE SISTEM</button>
         </div>
 
         <div class="info-box">
           📢 <b>INFO PENGAMBILAN:</b> Jadwal dan lokasi pengambilan barang akan diinfokan melalui Instagram <b>@ekraf_bemkmpnm</b>.
         </div>
 
-        <button class="btn-wa" onclick="sendToWhatsApp()">
-           KIRIM DETAIL PESANAN & BUKTI KE WHATSAAP
+        <button id="btnWa" class="btn-wa" onclick="sendToWhatsApp()" disabled>
+           💬 2. KONFIRMASI PESANAN KE WHATSAPP
         </button>
 
-        <button class="btn-selesai" onclick="switchPage('success')">
-           SELESAI
+        <button id="btnSelesai" class="btn-selesai" onclick="switchPage('success')" disabled>
+           ✅ 3. SELESAI
         </button>
 
       </div>
@@ -1144,20 +1233,17 @@
       }
     }
 
-    // LOGIKA PERPINDAHAN HALAMAN DIPERBARUI UNTUK MENDUKUNG 3 HALAMAN
     function switchPage(pageName) {
       const profilePage = document.getElementById('page-profile');
       const catalogPage = document.getElementById('page-catalog');
-      const successPage = document.getElementById('page-success'); // Halaman 3
+      const successPage = document.getElementById('page-success'); 
 
       if (!profilePage || !catalogPage || !successPage) return;
 
-      // Hapus status aktif dari semua halaman
       profilePage.classList.remove('active');
       catalogPage.classList.remove('active');
       successPage.classList.remove('active');
 
-      // Tambahkan status aktif pada halaman yang dituju
       if (pageName === 'profile') {
         profilePage.classList.add('active');
       } else if (pageName === 'catalog') {
@@ -1166,11 +1252,9 @@
         successPage.classList.add('active');
       }
       
-      // Gulir ke atas halaman secara otomatis
       window.scrollTo(0, 0);
     }
 
-    // FUNGSI RESET KERANJANG DAN FORMULIR SETELAH SELESAI TRANSAKSI
     function resetAndGoHome() {
       cart = [];
       updateCartUI();
@@ -1179,6 +1263,13 @@
       document.getElementById('buyerPhone').value = '';
       document.getElementById('buyerProdi').value = '';
       document.getElementById('buyerProof').value = '';
+      
+      document.getElementById('btnWa').disabled = true;
+      document.getElementById('btnSelesai').disabled = true;
+      
+      const btnUpload = document.getElementById('btnUpload');
+      btnUpload.innerHTML = '📤 UPLOAD BUKTI KE SISTEM';
+      btnUpload.disabled = false;
       
       switchPage('profile');
     }
@@ -1240,7 +1331,7 @@
           <tr>
             <td><b>${item.name}</b></td>
             <td>Rp ${item.price.toLocaleString('id-ID')}</td>
-            <td>
+            <td style="white-space: nowrap;">
               <button class="btn-qty" onclick="changeQty(${index}, -1)">-</button>
               <span style="margin: 0 8px; font-weight: bold; color: white;">${item.qty}</span>
               <button class="btn-qty" onclick="changeQty(${index}, 1)">+</button>
@@ -1253,8 +1344,7 @@
       totalPriceEl.innerText = `Rp ${total.toLocaleString('id-ID')}`;
     }
 
-    function sendToWhatsApp() {
-      const adminPhone = '6281999783021';
+    function uploadBukti() {
       const scriptURL = 'https://script.google.com/macros/s/AKfycbxtabVBByk792DtweUDpO4ZFy2xJUTGTzTonflv5eoEcPmNpS4UTZDBUcItJ1v-lzgs/exec';
 
       const name = document.getElementById('buyerName').value.trim();
@@ -1268,31 +1358,28 @@
       }
 
       if (!name || !phone || !prodi || !proofFile) {
-        alert('Mohon lengkapi Data Diri (Nama, No. WhatsApp, Prodi) dan Upload Bukti Transfer!');
+        alert('Mohon lengkapi Data Diri (Nama, No. WhatsApp, Prodi) dan Pilih File Bukti Transfer terlebih dahulu!');
         return;
       }
 
-      let itemDetails = '';
       let itemDetailsPlain = '';
       let total = 0;
 
       cart.forEach((item, i) => {
         const subtotal = item.price * item.qty;
         total += subtotal;
-        itemDetails += `${i + 1}. *${item.name}* (${item.qty}x) = Rp ${subtotal.toLocaleString('id-ID')}%0A`;
         itemDetailsPlain += `${i + 1}. ${item.name} (${item.qty}x) = Rp ${subtotal.toLocaleString('id-ID')}; `;
       });
 
-      // UBAH FOTO MENJADI BASE64 DAN UPLOAD KE DRIVE VIA APPS SCRIPT
       const reader = new FileReader();
       reader.onload = function(e) {
         const base64Data = e.target.result.split(',')[1];
-
-        // Ubah tampilan tombol agar tidak di-klik 2x oleh pembeli saat loading
-        const btnWa = document.querySelector('.btn-wa');
-        const originalText = btnWa.innerHTML;
-        btnWa.innerHTML = '⏳ Sedang mengupload bukti...';
-        btnWa.disabled = true;
+        
+        const btnUpload = document.getElementById('btnUpload');
+        const originalText = btnUpload.innerHTML;
+        
+        btnUpload.innerHTML = '⏳ Sedang mengupload bukti...';
+        btnUpload.disabled = true;
 
         fetch(scriptURL, {
           method: 'POST',
@@ -1308,32 +1395,49 @@
             mimeType: proofFile.type
           })
         }).then(() => {
-          // Kembalikan tombol seperti semula setelah selesai
-          btnWa.innerHTML = originalText;
-          btnWa.disabled = false;
-          
-          // BUKA WHATSAPP ADMIN
-          const textMessage = 
-            `Halo Admin, saya mau pesan perlengkapan via Web!%0A%0A` +
-            `*🛒 DAFTAR PESANAN:*%0A` +
-            `${itemDetails}%0A` +
-            `*💰 TOTAL BAYAR:* Rp ${total.toLocaleString('id-ID')}%0A%0A` +
-            `*👤 DATA PEMBELI:*%0A` +
-            `• *Nama Lengkap:* ${name}%0A` +
-            `• *No. WhatsApp:* ${phone}%0A` +
-            `• *Prodi:* ${prodi}%0A%0A` +
-            `_Bukti transfer telah saya upload ke sistem (Tersimpan di G-Drive)._`;
+          btnUpload.innerHTML = '✅ BUKTI BERHASIL DIUPLOAD';
+          document.getElementById('btnWa').disabled = false;
 
-          window.open(`https://wa.me/${adminPhone}?text=${textMessage}`, '_blank');
         }).catch(error => {
           console.error('Error:', error);
-          alert('Gagal mengirim data, silakan coba lagi.');
-          btnWa.innerHTML = originalText;
-          btnWa.disabled = false;
+          alert('Gagal mengupload bukti, silakan coba lagi.');
+          btnUpload.innerHTML = originalText;
+          btnUpload.disabled = false;
         });
       };
 
       reader.readAsDataURL(proofFile);
+    }
+
+    function sendToWhatsApp() {
+      const adminPhone = '6281999783021';
+      const name = document.getElementById('buyerName').value.trim();
+      const phone = document.getElementById('buyerPhone').value.trim();
+      const prodi = document.getElementById('buyerProdi').value.trim();
+
+      let itemDetails = '';
+      let total = 0;
+
+      cart.forEach((item, i) => {
+        const subtotal = item.price * item.qty;
+        total += subtotal;
+        itemDetails += `${i + 1}. *${item.name}* (${item.qty}x) = Rp ${subtotal.toLocaleString('id-ID')}%0A`;
+      });
+
+      const textMessage = 
+        `Halo Admin, saya mau pesan perlengkapan via Web!%0A%0A` +
+        `*🛒 DAFTAR PESANAN:*%0A` +
+        `${itemDetails}%0A` +
+        `*💰 TOTAL BAYAR:* Rp ${total.toLocaleString('id-ID')}%0A%0A` +
+        `*👤 DATA PEMBELI:*%0A` +
+        `• *Nama Lengkap:* ${name}%0A` +
+        `• *No. WhatsApp:* ${phone}%0A` +
+        `• *Prodi:* ${prodi}%0A%0A` +
+        `_Bukti transfer telah saya upload ke sistem (Tersimpan di G-Drive)._`;
+
+      window.open(`https://wa.me/${adminPhone}?text=${textMessage}`, '_blank');
+      
+      document.getElementById('btnSelesai').disabled = false;
     }
   </script>
 
