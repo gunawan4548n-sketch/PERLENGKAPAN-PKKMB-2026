@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ekraf Store - BEM-KM PNM</title>
+  <title>Ekraf Store - BEM-KM PNM (CLOSED)</title>
   <style>
     * {
       box-sizing: border-box;
@@ -12,7 +12,6 @@
       padding: 0;
     }
 
-    /* 1. BACKGROUND GRADASI DEEP BLUE */
     body {
       background: linear-gradient(-45deg, #03013b, #021342, #1c0176, #051930);
       background-size: 400% 400%;
@@ -28,20 +27,16 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* ========================================= */
-    /* ANIMASI TEKS GRADIENT BARU */
-    /* ========================================= */
     .gradient-text {
-      /* Menggunakan 4 warna kamu + warna 1 di akhir agar animasinya looping tanpa patah */
       background: linear-gradient(to right, #5e00ff, #0853ea, #3af916, #00f4ff, #5e00ff);
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       color: transparent;
-      animation: gradientTextAnim 5.5s linear infinite; /* Kecepatan 5.5 seperti request */
+      animation: gradientTextAnim 5.5s linear infinite;
       display: inline-block;
-      text-shadow: none !important; /* Hilangkan shadow lama biar gradasinya jelas */
+      text-shadow: none !important;
     }
 
     @keyframes gradientTextAnim {
@@ -49,7 +44,6 @@
       100% { background-position: 200% center; }
     }
 
-    /* CSS UNTUK SPLASH CURSOR BACKGROUND */
     #splash-cursor {
       position: fixed;
       top: 0;
@@ -57,16 +51,14 @@
       width: 100vw;
       height: 100vh;
       z-index: 0; 
-      pointer-events: none; /* Biar tetap bisa klik tombol di web */
+      pointer-events: none;
     }
 
-    /* Pastikan header dan konten web tetap di atas kanvas */
     .header-bar, .page-section, .modal-overlay {
       position: relative;
       z-index: 10;
     }
 
-    /* 2. HEADER BAR */
     .header-bar {
       background-color: rgba(11, 19, 41, 0.85);
       backdrop-filter: blur(12px);
@@ -116,7 +108,6 @@
       color: white;
     }
 
-    /* SISTEM HALAMAN (PAGES) */
     .page-section {
       display: none;
     }
@@ -130,7 +121,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* HALAMAN 1: PROFIL / LANDING PAGE */
     .profile-container {
       max-width: 900px;
       margin: 40px auto;
@@ -176,14 +166,14 @@
 
     .po-badge {
       display: inline-block;
-      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+      background: linear-gradient(135deg, #dc2626, #ef4444);
       color: white;
       padding: 8px 20px;
       border-radius: 20px;
       font-size: 1rem;
       font-weight: bold;
       margin-bottom: 15px;
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
       letter-spacing: 1px;
     }
 
@@ -242,35 +232,6 @@
       box-shadow: 0 0 30px rgba(220, 39, 67, 0.7);
     }
 
-    /* VISI MISI SECTION */
-    .visi-misi-box {
-      text-align: left;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid #1e3a8a;
-      border-radius: 16px;
-      padding: 25px;
-      margin-top: 20px;
-    }
-
-    .visi-misi-box h3 {
-      color: #93c5fd;
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-      text-shadow: 0 0 10px rgba(147, 197, 253, 0.5);
-    }
-
-    .visi-misi-box p, .visi-misi-box li {
-      color: #cbd5e1;
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-
-    .visi-misi-box ol {
-      padding-left: 20px;
-    }
-
-    /* SECTION TIM KAMI */
     .team-section-title {
       font-size: 1.5rem;
       color: #93c5fd;
@@ -352,7 +313,6 @@
       margin: 0;
     }
 
-    /* MODAL ZOOM & POPUP */
     .modal-overlay {
       display: none;
       position: fixed;
@@ -476,7 +436,6 @@
       padding-left: 18px;
     }
 
-    /* HALAMAN 2: KATALOG UTAMA */
     .container {
       max-width: 1000px;
       margin: 30px auto;
@@ -561,133 +520,18 @@
       box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
     }
 
-    .size-select:hover {
-      border-color: #60a5fa;
-      box-shadow: 0 0 12px rgba(96, 165, 250, 0.6);
-    }
-
-    .size-select:focus {
-      border-color: #60a5fa;
-      box-shadow: 0 0 18px rgba(96, 165, 250, 0.8);
-      background-color: rgba(15, 23, 42, 0.95);
-    }
-
     .btn-add {
-      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
-      color: white;
+      background: #475569;
+      color: #cbd5e1;
       border: none;
       padding: 10px 15px;
       border-radius: 25px;
-      cursor: pointer;
+      cursor: not-allowed;
       font-weight: 600;
       width: 100%;
       font-size: 0.95rem;
-      transition: 0.3s;
-      box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
       margin-top: auto;
-    }
-
-    .btn-add:hover {
-      box-shadow: 0 0 18px rgba(59, 130, 246, 0.8);
-      transform: scale(1.03);
-    }
-
-    .checkout-card {
-      background-color: rgba(11, 19, 41, 0.8);
-      border: 1px solid #1e3a8a;
-      border-radius: 20px;
-      padding: 30px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 25px rgba(29, 78, 216, 0.4);
-    }
-
-    /* WRAPPER TABEL AGAR BISA DI-SCROLL DI HP */
-    .table-responsive {
-      width: 100%;
-      overflow-x: auto;
-      margin-bottom: 25px;
-    }
-
-    .cart-table {
-      width: 100%;
-      min-width: 450px;
-      border-collapse: collapse;
-      font-size: 0.95rem;
-    }
-
-    .cart-table th {
-      border-bottom: 2px solid #1e3a8a;
-      padding: 12px;
-      text-align: left;
-      color: #93c5fd;
-    }
-
-    .cart-table td {
-      border-bottom: 1px solid #172554;
-      padding: 12px;
-      color: #e3e3e3;
-    }
-
-    .btn-qty {
-      background: #1e293b;
-      color: white;
-      border: 1px solid #3b82f6;
-      padding: 4px 11px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .btn-qty:hover {
-      background-color: #3b82f6;
-    }
-
-    .total-box {
-      font-size: 1.6rem;
-      font-weight: bold;
-      color: white;
-      text-align: right;
-      margin: 20px 0;
-      text-shadow: 0 0 15px rgba(96, 165, 250, 0.6);
-    }
-
-    .qris-box {
-      text-align: center;
-      background-color: rgba(15, 23, 42, 0.6);
-      border: 2px dashed #3b82f6;
-      border-radius: 15px;
-      padding: 35px;
-      margin: 35px 0;
-      box-shadow: 0 0 25px rgba(59, 130, 246, 0.4) inset;
-    }
-
-    .qris-img {
-      width: 100%;
-      max-width: 300px;
-      height: auto;
-      object-fit: contain;
-      background: white;
-      padding: 15px;
-      border-radius: 15px;
-      margin-top: 25px;
-      box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
-    }
-
-    .info-box {
-      background-color: rgba(59, 130, 246, 0.15);
-      border: 1px solid #3b82f6;
-      border-radius: 12px;
-      padding: 15px 20px;
-      margin: 25px 0;
-      text-align: center;
-      color: #93c5fd;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.2) inset;
-    }
-
-    .info-box b {
-      color: white;
+      opacity: 0.7;
     }
 
     .warning-box {
@@ -707,151 +551,6 @@
       color: #fff;
     }
 
-    .form-group {
-      margin-bottom: 18px;
-    }
-
-    .form-group label {
-      display: block;
-      margin-bottom: 10px;
-      color: #93c5fd;
-      font-size: 0.95rem;
-      font-weight: 600;
-    }
-
-    .form-group input, .form-group textarea {
-      width: 100%;
-      background-color: rgba(15, 23, 42, 0.7);
-      border: 1px solid #1e3a8a;
-      color: white;
-      padding: 14px;
-      border-radius: 10px;
-      outline: none;
-      font-size: 1rem;
-      font-family: inherit;
-      transition: 0.3s;
-    }
-
-    .form-group input:focus, .form-group textarea:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
-    }
-
-    input[type="file"] {
-      background-color: rgba(15, 23, 42, 0.7);
-      border: 1px solid #1e3a8a;
-      color: #93c5fd;
-      padding: 12px;
-      border-radius: 10px;
-      outline: none;
-      font-size: 0.95rem;
-      width: 100%;
-      cursor: pointer;
-    }
-
-    input[type="file"]::file-selector-button {
-      background: linear-gradient(135deg, #1d4ed8, #3b82f6);
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 600;
-      margin-right: 15px;
-      transition: 0.3s;
-    }
-
-    input[type="file"]::file-selector-button:hover {
-      background: #3b82f6;
-    }
-
-    /* TOMBOL UPLOAD BUKTI BARU */
-    .btn-upload {
-      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-      color: white;
-      border: none;
-      width: 100%;
-      padding: 14px;
-      font-weight: bold;
-      font-size: 1.05rem;
-      border-radius: 20px;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: 0.3s;
-      box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
-    }
-
-    .btn-upload:hover:not(:disabled) {
-      box-shadow: 0 0 25px rgba(59, 130, 246, 0.7);
-      transform: translateY(-2px);
-    }
-
-    .btn-upload:disabled {
-      background: #475569;
-      cursor: not-allowed;
-      box-shadow: none;
-      transform: none;
-    }
-
-    /* TOMBOL KE WHATSAPP */
-    .btn-wa {
-      background: linear-gradient(135deg, #25D366, #1eb854);
-      color: white;
-      border: none;
-      width: 100%;
-      padding: 16px;
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-radius: 30px;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: 0.3s;
-      box-shadow: 0 0 15px rgba(37, 211, 102, 0.4);
-    }
-
-    .btn-wa:hover:not(:disabled) {
-      box-shadow: 0 0 25px rgba(37, 211, 102, 0.7);
-      transform: translateY(-2px);
-    }
-
-    .btn-wa:disabled {
-      background: #475569;
-      cursor: not-allowed;
-      box-shadow: none;
-      transform: none;
-    }
-
-    /* TOMBOL SELESAI TRANSAKSI */
-    .btn-selesai {
-      background: linear-gradient(135deg, #10b981, #059669);
-      color: white;
-      border: none;
-      width: 100%;
-      padding: 16px;
-      font-weight: bold;
-      font-size: 1.1rem;
-      border-radius: 30px;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: 0.3s;
-      box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
-    }
-
-    .btn-selesai:hover:not(:disabled) {
-      box-shadow: 0 0 25px rgba(16, 185, 129, 0.7);
-      transform: translateY(-2px);
-    }
-    
-    .btn-selesai:disabled {
-      background: #475569;
-      cursor: not-allowed;
-      box-shadow: none;
-      transform: none;
-    }
-
-    /* ========================================= */
-    /* PENGATURAN KHUSUS UNTUK HP (MOBILE FIXES) */
-    /* ========================================= */
     @media (max-width: 768px) {
       .header-bar {
         flex-direction: column;
@@ -862,7 +561,7 @@
         font-size: 1.1rem;
         text-align: center;
       }
-      .profile-card, .checkout-card {
+      .profile-card {
         padding: 20px 15px;
       }
       .profile-card h1 {
@@ -871,7 +570,6 @@
       .section-title {
         font-size: 1.3rem;
       }
-      
       .product-grid {
         grid-template-columns: repeat(2, 1fr); 
         gap: 10px; 
@@ -883,7 +581,6 @@
         height: 140px; 
         margin-bottom: 10px;
       }
-      
       .product-title {
         font-size: 0.85rem; 
         line-height: 1.2;
@@ -902,15 +599,8 @@
         padding: 8px; 
         font-size: 0.85rem;
       }
-
-      .qris-box {
-        padding: 15px;
-      }
       .modal-content {
         padding: 20px;
-      }
-      .total-box {
-        font-size: 1.2rem;
       }
     }
   </style>
@@ -942,11 +632,8 @@
           </video>
         </div>
 
-        <div class="po-badge">🔥 OPEN PRE ORDER PERLENGKAPAN PKKMB 2026 🔥</div>
+        <div class="po-badge">🚫 PRE ORDER PKKMB 2026 DITUTUP (CLOSE ORDER) 🚫</div>
         <h1 class="gradient-text">KEMENTERIAN EKONOMI KREATIF</h1>
-        <p>
-          
-        </p>
 
         <div class="profile-buttons" style="margin-top: 25px;">
           <button class="btn-main" onclick="switchPage('catalog')">🛍️ Lihat Katalog Produk</button>
@@ -959,14 +646,12 @@
 
       <div class="profile-card">
         <h2 class="team-section-title">👥 Tim Pengelola </h2>
-        <p style="font-size: 0.95rem; color: #93c5fd; margin-bottom: 20px;"></p>
         
         <div class="group-photo-container" onclick="openVisiMisiModal()">
           <img src="STARTING.jpg" alt="Foto Bersama Tim Ekraf">
         </div>
 
         <div class="team-grid">
-          
           <div class="team-member-card" onclick="openZoomModal('Menteri Ekraf', '1.jpg')">
             <img src="1.jpg" alt="Maihendra">
             <h3>Maihendra</h3>
@@ -990,7 +675,6 @@
             <h3>Gunawan</h3>
             <p>Staff</p>
           </div>
-
         </div>
       </div>
 
@@ -1029,6 +713,11 @@
       
       <h2 class="section-title">🛍️ Katalog Perlengkapan & Atribut</h2>
 
+      <div class="warning-box" style="font-size: 1.1rem; padding: 20px; border-width: 2px;">
+        ⛔ <b>MOHON MAAF, PEMESANAN TELAH DITUTUP!</b><br>
+        Sesi Pre-Order (PO) Perlengkapan PKKMB 2026 telah berakhir. Pengambilan barang dan info selanjutnya akan diumumkan melalui Instagram <b>@ekraf_bemkmpnm</b>.
+      </div>
+
       <div class="product-grid">
 
         <div class="product-card">
@@ -1036,7 +725,7 @@
           <div>
             <div class="product-title">Sepatu Pantofel Cowok</div>
             <div class="price">Rp 80.000</div>
-            <select id="size-52" class="size-select">
+            <select id="size-52" class="size-select" disabled>
               <option value="Size 39 (24.5 cm)">Size 39 (24.5 cm)</option>
               <option value="Size 40 (25 cm)">Size 40 (25 cm)</option>
               <option value="Size 41 (26 cm)">Size 41 (26 cm)</option>
@@ -1044,7 +733,7 @@
               <option value="Size 43 (27.5 cm)">Size 43 (27.5 cm)</option>
             </select>
           </div>
-          <button class="btn-add" onclick="addWithSize('Sepatu Pantofel Cowok', 80000, 'size-52')">+ Tambah</button>
+          <button class="btn-add" disabled>❌ PO Ditutup</button>
         </div>
 
         <div class="product-card">
@@ -1052,7 +741,7 @@
           <div>
             <div class="product-title">Sepatu Pantofel Cewek</div>
             <div class="price">Rp 65.000</div>
-            <select id="size-53" class="size-select">
+            <select id="size-53" class="size-select" disabled>
               <option value="Size 37 (23.5 cm)">Size 37 (23.5 cm)</option>
               <option value="Size 38 (24 cm)">Size 38 (24 cm)</option>
               <option value="Size 39 (24.5 cm)">Size 39 (24.5 cm)</option>
@@ -1060,7 +749,7 @@
               <option value="Size 41 (25.5 cm)">Size 41 (25.5 cm)</option>
             </select>
           </div>
-          <button class="btn-add" onclick="addWithSize('Sepatu Pantofel Cewek', 65000, 'size-53')">+ Tambah</button>
+          <button class="btn-add" disabled>❌ PO Ditutup</button>
         </div>
 
         <div class="product-card">
@@ -1069,7 +758,7 @@
             <div class="product-title">Kaos Kaki Putih</div>
             <div class="price">Rp 15.000</div>
           </div>
-          <button class="btn-add" onclick="addToCart('Kaos Kaki Putih', 15000)">+ Tambah</button>
+          <button class="btn-add" disabled>❌ PO Ditutup</button>
         </div>
 
         <div class="product-card">
@@ -1078,7 +767,7 @@
             <div class="product-title">Topi Rimba</div>
             <div class="price">Rp 20.000</div>
           </div>
-          <button class="btn-add" onclick="addToCart('Topi Rimba', 20000)">+ Tambah</button>
+          <button class="btn-add" disabled>❌ PO Ditutup</button>
         </div>
 
         <div class="product-card">
@@ -1087,7 +776,7 @@
             <div class="product-title">Dasi Hitam</div>
             <div class="price">Rp 10.000</div>
           </div>
-          <button class="btn-add" onclick="addToCart('Dasi Hitam', 10000)">+ Tambah</button>
+          <button class="btn-add" disabled>❌ PO Ditutup</button>
         </div>
 
         <div class="product-card">
@@ -1096,7 +785,7 @@
             <div class="product-title">Ikat Pinggang</div>
             <div class="price">Rp 15.000</div>
           </div>
-          <button class="btn-add" onclick="addToCart('Ikat Pinggang', 15000)">+ Tambah</button>
+          <button class="btn-add" disabled>❌ PO Ditutup</button>
         </div>
 
         <div class="product-card">
@@ -1104,7 +793,7 @@
           <div>
             <div class="product-title">Kemeja Cowo</div>
             <div class="price">Rp 80.000</div>
-            <select id="size-58" class="size-select">
+            <select id="size-58" class="size-select" disabled>
               <option value="Size M (LD 102 cm)">Size M (LD 102 cm)</option>
               <option value="Size L (LD 106 cm)">Size L (LD 106 cm)</option>
               <option value="Size XL (LD 110 cm)">Size XL (LD 110 cm)</option>
@@ -1112,7 +801,7 @@
               <option value="Size XXXL (LD 118 cm)">Size XXXL (LD 118 cm)</option>
             </select>
           </div>
-          <button class="btn-add" onclick="addWithSize('Kemeja Cowo', 80000, 'size-58')">+ Tambah</button>
+          <button class="btn-add" disabled>❌ PO Ditutup</button>
         </div>
 
         <div class="product-card">
@@ -1120,14 +809,14 @@
           <div>
             <div class="product-title">Kemeja Cewe</div>
             <div class="price">Rp 80.000</div>
-            <select id="size-59" class="size-select">
+            <select id="size-59" class="size-select" disabled>
               <option value="Size M (LD 94 cm)">Size M (LD 94 cm)</option>
               <option value="Size L (LD 104 cm)">Size L (LD 104 cm)</option>
               <option value="Size XL (LD 114 cm)">Size XL (LD 114 cm)</option>
               <option value="Size XXL (LD 124 cm)">Size XXL (LD 124 cm)</option>
             </select>
           </div>
-          <button class="btn-add" onclick="addWithSize('Kemeja Cewe', 80000, 'size-59')">+ Tambah</button>
+          <button class="btn-add" disabled>❌ PO Ditutup</button>
         </div>
 
         <div class="product-card">
@@ -1135,7 +824,7 @@
           <div>
             <div class="product-title">Celana Kain Cowo</div>
             <div class="price">Rp 75.000</div>
-            <select id="size-60" class="size-select">
+            <select id="size-60" class="size-select" disabled>
               <option value="Size 27 (LP 68 cm)">Size 27 (LP 68 cm)</option>
               <option value="Size 28 (LP 71 cm)">Size 28 (LP 71 cm)</option>
               <option value="Size 29 (LP 74 cm)">Size 29 (LP 74 cm)</option>
@@ -1150,7 +839,7 @@
               <option value="Size 38 (LP 97 cm)">Size 38 (LP 97 cm)</option>
             </select>
           </div>
-          <button class="btn-add" onclick="addWithSize('Celana Kain Cowo', 75000, 'size-60')">+ Tambah</button>
+          <button class="btn-add" disabled>❌ PO Ditutup</button>
         </div>
 
         <div class="product-card">
@@ -1158,117 +847,18 @@
           <div>
             <div class="product-title">Celana Kain Cewe</div>
             <div class="price">Rp 70.000</div>
-            <select id="size-61" class="size-select">
+            <select id="size-61" class="size-select" disabled>
               <option value="Size M (LP 64-76 cm)">Size M (LP 64-76 cm)</option>
               <option value="Size L (LP 68-79 cm)">Size L (LP 68-79 cm)</option>
               <option value="Size XL (LP 75-85 cm)">Size XL (LP 75-85 cm)</option>
               <option value="Size XXL (LP 80-100 cm)">Size XXL (LP 80-100 cm)</option>
             </select>
           </div>
-          <button class="btn-add" onclick="addWithSize('Celana Kain Cewe', 70000, 'size-61')">+ Tambah</button>
+          <button class="btn-add" disabled>❌ PO Ditutup</button>
         </div>
 
       </div>
 
-      <div class="checkout-card">
-        <h2 class="section-title">🛒 Keranjang Belanja Anda</h2>
-        
-        <div class="table-responsive">
-          <table class="cart-table">
-            <thead>
-              <tr>
-                <th>Produk</th>
-                <th>Harga</th>
-                <th>Jumlah</th>
-                <th>Subtotal</th>
-              </tr>
-            </thead>
-            <tbody id="cartTableBody">
-              <tr><td colspan="4" style="text-align:center; color:#888;">Belum ada produk yang dipilih. Klik tombol <b>+ Tambah</b> di atas!</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="total-box">
-          Total Belanja: <span id="totalPrice">Rp 0</span>
-        </div>
-
-        <hr style="border: 0; border-top: 1px solid #1e3a8a; margin: 35px 0;">
-
-        <h2 class="section-title">👤 Data Diri Pembeli</h2>
-        
-        <div class="form-group">
-          <label>Nama Lengkap:</label>
-          <input type="text" id="buyerName" placeholder="Masukkan nama lengkap...">
-        </div>
-
-        <div class="form-group">
-          <label>Nomor WhatsApp:</label>
-          <input type="tel" id="buyerPhone" placeholder="Contoh: 081234567890">
-        </div>
-
-        <div class="form-group">
-          <label>Prodi (Program Studi):</label>
-          <input type="text" id="buyerProdi" placeholder="Contoh: Teknik Listrik / Manajemen...">
-        </div>
-
-        <hr style="border: 0; border-top: 1px solid #1e3a8a; margin: 35px 0;">
-
-        <h2 class="section-title">💳 Pembayaran QRIS & Bukti Transfer</h2>
-        <div class="qris-box">
-          <p style="color: #93c5fd; font-weight: 600;">Scan QRIS di bawah & transfer sesuai Total Belanja:</p>
-          <img src="QRIS EKRAF.jpeg" alt="QRIS Toko" class="qris-img">
-        </div>
-
-        <div class="warning-box">
-          ⚠️ <b>PERINGATAN KERAS:</b> Dilarang keras mengunggah atau menggunakan bukti transfer palsu! Segala bentuk pemalsuan pembayaran akan langsung berakibat pada pembatalan pesanan dan blacklist.
-        </div>
-
-        <div class="form-group">
-          <label>1. Upload Bukti Transfer (Screenshot):</label>
-          <input type="file" id="buyerProof" accept="image/*">
-          <button id="btnUpload" class="btn-upload" onclick="uploadBukti()">📤 UPLOAD BUKTI KE SISTEM</button>
-        </div>
-
-        <div class="info-box">
-          📢 <b>INFO PENGAMBILAN:</b> Jadwal dan lokasi pengambilan barang akan diinfokan melalui Instagram <b>@ekraf_bemkmpnm</b>.
-        </div>
-
-        <button id="btnWa" class="btn-wa" onclick="sendToWhatsApp()" disabled>
-           💬 2. KONFIRMASI PESANAN KE WHATSAPP
-        </button>
-
-        <button id="btnSelesai" class="btn-selesai" onclick="switchPage('success')" disabled>
-           ✅ 3. SELESAI
-        </button>
-
-      </div>
-    </div>
-  </div>
-
-  <div id="page-success" class="page-section">
-    <div class="container">
-      <div class="checkout-card" style="text-align: center; padding: 60px 30px; margin-top: 40px;">
-        <div style="font-size: 5rem; margin-bottom: 20px;">🎉</div>
-        <h2 class="section-title" style="margin-bottom: 15px; font-size: 2.2rem; color: #60a5fa;">Terima Kasih Telah Berbelanja!</h2>
-        
-        <p style="color: #e3e3e3; font-size: 1.15rem; line-height: 1.6; margin-bottom: 25px;">
-          Pesanan Anda telah kami terima dan sedang dalam antrean verifikasi tim kami.<br>
-          Pastikan Anda sudah berhasil mengirimkan chat berisi rincian & bukti transfer ke Admin via WhatsApp.
-        </p>
-        
-        <div class="info-box" style="display: inline-block; text-align: left; margin-bottom: 35px; max-width: 600px;">
-          📢 <b>Informasi Penting:</b><br><br>
-          • Simpan bukti pembayaran Anda dengan baik.<br>
-          • Jadwal dan lokasi pengambilan perlengkapan akan diinformasikan secara resmi melalui Instagram <b>@ekraf_bemkmpnm</b>.<br>
-          • Jika ada kendala, Anda dapat menghubungi Admin kembali melalui chat WhatsApp.
-        </div>
-        
-        <br>
-        <button class="btn-main" onclick="resetAndGoHome()" style="background: linear-gradient(135deg, #1e293b, #3b82f6); max-width: 250px;">
-          ⬅️ Kembali ke Beranda
-        </button>
-      </div>
     </div>
   </div>
 
@@ -1297,208 +887,27 @@
     function switchPage(pageName) {
       const profilePage = document.getElementById('page-profile');
       const catalogPage = document.getElementById('page-catalog');
-      const successPage = document.getElementById('page-success'); 
 
-      if (!profilePage || !catalogPage || !successPage) return;
+      if (!profilePage || !catalogPage) return;
 
       profilePage.classList.remove('active');
       catalogPage.classList.remove('active');
-      successPage.classList.remove('active');
 
       if (pageName === 'profile') {
         profilePage.classList.add('active');
       } else if (pageName === 'catalog') {
         catalogPage.classList.add('active');
-      } else if (pageName === 'success') {
-        successPage.classList.add('active');
       }
       
       window.scrollTo(0, 0);
     }
 
-    function resetAndGoHome() {
-      cart = [];
-      updateCartUI();
-      
-      document.getElementById('buyerName').value = '';
-      document.getElementById('buyerPhone').value = '';
-      document.getElementById('buyerProdi').value = '';
-      document.getElementById('buyerProof').value = '';
-      
-      document.getElementById('btnWa').disabled = true;
-      document.getElementById('btnSelesai').disabled = true;
-      
-      const btnUpload = document.getElementById('btnUpload');
-      btnUpload.innerHTML = '📤 UPLOAD BUKTI KE SISTEM';
-      btnUpload.disabled = false;
-      
-      switchPage('profile');
-    }
-
-    let cart = [];
-
     function addToCart(name, price) {
-      const existingItem = cart.find(item => item.name === name);
-      if (existingItem) {
-        existingItem.qty += 1;
-      } else {
-        cart.push({ name: name, price: price, qty: 1 });
-      }
-      updateCartUI();
+      alert('Mohon maaf, Pre-Order (PO) telah RESMI DITUTUP! Pemesanan tidak dapat diproses lagi.');
     }
 
     function addWithSize(baseName, price, selectId) {
-      const selectElement = document.getElementById(selectId);
-      const selectedSize = selectElement ? selectElement.value : '';
-      const itemName = `${baseName} (${selectedSize})`;
-
-      const existingItem = cart.find(item => item.name === itemName);
-      if (existingItem) {
-        existingItem.qty += 1;
-      } else {
-        cart.push({ name: itemName, price: price, qty: 1 });
-      }
-      updateCartUI();
-    }
-
-    function changeQty(index, change) {
-      cart[index].qty += change;
-      if (cart[index].qty <= 0) {
-        cart.splice(index, 1);
-      }
-      updateCartUI();
-    }
-
-    function updateCartUI() {
-      const tbody = document.getElementById('cartTableBody');
-      const totalPriceEl = document.getElementById('totalPrice');
-
-      if (!tbody || !totalPriceEl) return;
-
-      if (cart.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; color:#888;">Belum ada produk yang dipilih. Klik tombol <b>+ Tambah</b> di atas!</td></tr>`;
-        totalPriceEl.innerText = 'Rp 0';
-        return;
-      }
-
-      tbody.innerHTML = '';
-      let total = 0;
-
-      cart.forEach((item, index) => {
-        const subtotal = item.price * item.qty;
-        total += subtotal;
-
-        tbody.innerHTML += `
-          <tr>
-            <td><b>${item.name}</b></td>
-            <td>Rp ${item.price.toLocaleString('id-ID')}</td>
-            <td style="white-space: nowrap;">
-              <button class="btn-qty" onclick="changeQty(${index}, -1)">-</button>
-              <span style="margin: 0 8px; font-weight: bold; color: white;">${item.qty}</span>
-              <button class="btn-qty" onclick="changeQty(${index}, 1)">+</button>
-            </td>
-            <td>Rp ${subtotal.toLocaleString('id-ID')}</td>
-          </tr>
-        `;
-      });
-
-      totalPriceEl.innerText = `Rp ${total.toLocaleString('id-ID')}`;
-    }
-
-    function uploadBukti() {
-      const scriptURL = 'https://script.google.com/macros/s/AKfycbxtabVBByk792DtweUDpO4ZFy2xJUTGTzTonflv5eoEcPmNpS4UTZDBUcItJ1v-lzgs/exec';
-
-      const name = document.getElementById('buyerName').value.trim();
-      const phone = document.getElementById('buyerPhone').value.trim();
-      const prodi = document.getElementById('buyerProdi').value.trim();
-      const proofFile = document.getElementById('buyerProof').files[0];
-
-      if (cart.length === 0) {
-        alert('Keranjang belanjaanmu masih kosong!');
-        return;
-      }
-
-      if (!name || !phone || !prodi || !proofFile) {
-        alert('Mohon lengkapi Data Diri (Nama, No. WhatsApp, Prodi) dan Pilih File Bukti Transfer terlebih dahulu!');
-        return;
-      }
-
-      let itemDetailsPlain = '';
-      let total = 0;
-
-      cart.forEach((item, i) => {
-        const subtotal = item.price * item.qty;
-        total += subtotal;
-        itemDetailsPlain += `${i + 1}. ${item.name} (${item.qty}x) = Rp ${subtotal.toLocaleString('id-ID')}; `;
-      });
-
-      const reader = new FileReader();
-      reader.onload = function(e) {
-        const base64Data = e.target.result.split(',')[1];
-        
-        const btnUpload = document.getElementById('btnUpload');
-        const originalText = btnUpload.innerHTML;
-        
-        btnUpload.innerHTML = '⏳ Sedang mengupload bukti...';
-        btnUpload.disabled = true;
-
-        fetch(scriptURL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            name: name,
-            phone: phone,
-            prodi: prodi,
-            items: itemDetailsPlain,
-            total: `Rp ${total.toLocaleString('id-ID')}`,
-            image64: base64Data,
-            mimeType: proofFile.type
-          })
-        }).then(() => {
-          btnUpload.innerHTML = '✅ BUKTI BERHASIL DIUPLOAD';
-          document.getElementById('btnWa').disabled = false;
-
-        }).catch(error => {
-          console.error('Error:', error);
-          alert('Gagal mengupload bukti, silakan coba lagi.');
-          btnUpload.innerHTML = originalText;
-          btnUpload.disabled = false;
-        });
-      };
-
-      reader.readAsDataURL(proofFile);
-    }
-
-    function sendToWhatsApp() {
-      const adminPhone = '6281999783021';
-      const name = document.getElementById('buyerName').value.trim();
-      const phone = document.getElementById('buyerPhone').value.trim();
-      const prodi = document.getElementById('buyerProdi').value.trim();
-
-      let itemDetails = '';
-      let total = 0;
-
-      cart.forEach((item, i) => {
-        const subtotal = item.price * item.qty;
-        total += subtotal;
-        itemDetails += `${i + 1}. *${item.name}* (${item.qty}x) = Rp ${subtotal.toLocaleString('id-ID')}%0A`;
-      });
-
-      const textMessage = 
-        `Halo Admin, saya mau pesan perlengkapan via Web!%0A%0A` +
-        `*🛒 DAFTAR PESANAN:*%0A` +
-        `${itemDetails}%0A` +
-        `*💰 TOTAL BAYAR:* Rp ${total.toLocaleString('id-ID')}%0A%0A` +
-        `*👤 DATA PEMBELI:*%0A` +
-        `• *Nama Lengkap:* ${name}%0A` +
-        `• *No. WhatsApp:* ${phone}%0A` +
-        `• *Prodi:* ${prodi}%0A%0A` +
-        `_Bukti transfer telah saya upload ke sistem (Tersimpan di G-Drive)._`;
-
-      window.open(`https://wa.me/${adminPhone}?text=${textMessage}`, '_blank');
-      
-      document.getElementById('btnSelesai').disabled = false;
+      alert('Mohon maaf, Pre-Order (PO) telah RESMI DITUTUP! Pemesanan tidak dapat diproses lagi.');
     }
   </script>
 
@@ -1515,7 +924,7 @@
       SPLAT_RADIUS: 0.2,
       SPLAT_FORCE: 6000,
       COLOR_UPDATE_SPEED: 10,
-      TRANSPARENT: true // Biar background gradasi web-nya tetap kelihatan
+      TRANSPARENT: true
     });
   </script>
 
